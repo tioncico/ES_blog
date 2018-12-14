@@ -44,19 +44,6 @@ class Article extends BaseModel
     }
 
     /**
-     * 用Id查询一条数据
-     * @param ArticleBean $bean
-     * @param string      $field
-     * @return array|null
-     * @throws \Exception
-     */
-    function getOne(ArticleBean $bean, string $field = '*'): ?array
-    {
-        $data = $this->getDbConnection()->where('aid', $bean->getAid())->getOne($this->table, $field);
-        return empty($data) ? null : $data;
-    }
-
-    /**
      * 删除一条数据
      * @param ArticleBean $bean
      * @return bool|void

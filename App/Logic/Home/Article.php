@@ -60,6 +60,16 @@ class Article
         return $this->getPageList(\App\Model\Article\Article::class, $conditionBean, $page, $limit, $field);
     }
 
+    function getArticleInfoForAid(int $aid)
+    {
+        $field = '*';
+        $conditionBean = new ConditionBean();
+        $conditionBean->addWhere('aid', $aid);
+        $info = $this->getOne(\App\Model\Article\Article::class, $conditionBean, $field);
+        return $info;
+    }
+
+
     function getCategoryListByHome(ConditionBean $conditionBean = null, int $page = 1, int $limit = 20)
     {
         $field = '*';
@@ -81,6 +91,16 @@ class Article
             $model = new $modelName($mysqlDbObject);
             $data = $model->conditionBuild($conditionBean)->getAll($page, $limit, $filed);
 //            var_dump($mysqlDbObject->getLastQuery());
+            return $data;
+        });
+        return $data;
+    }
+
+    function getOne(String $modelName, ConditionBean $conditionBean = null, $filed = '*')
+    {
+        $data = MysqlPool::invoke(function (MysqlDbObject $mysqlDbObject) use ($modelName, $conditionBean, $filed) {
+            $model = new $modelName($mysqlDbObject);
+            $data = $model->conditionBuild($conditionBean)->getOne($filed);
             return $data;
         });
         return $data;

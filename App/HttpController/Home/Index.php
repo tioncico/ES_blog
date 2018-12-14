@@ -8,30 +8,41 @@
 
 namespace App\HttpController\Home;
 
-use App\HttpController\Base;
-use App\Model\ConditionBean;
-use EasySwoole\EasySwoole\FastCache\Cache;
 
-class Index extends Base
+class Index extends HomeBase
 {
     function index()
     {
+        $data = $this->request()->getRequestParam();
+        empty($data['page']) && $data['page'] = 1;
         $logic = new \App\Logic\Home\Article();
-        $articleList = $logic->getArticleListByHome(null, 1, 10);
-        $categoryList = $logic->getCategoryListByHome(null, 1,30);
-        $tagList = $logic->getTagList(null, 1,30);
-        $topList = $logic->getTopArticleList(null, 1, 20);
-        $newCommentList = $logic->getNewCommentList(null, 1, 10);
-        $linkList = $logic->getLinkListByHome(null, 1, 30);
+        $articleList = $logic->getArticleListByHome(null, $data['page'], 10);
+
         $this->assign([
-            'articleList'    => $articleList,
-            'categoryList'   => $categoryList,
-            'tagList'        => $tagList,
-            'topList'        => $topList,
-            'newCommentList' => $newCommentList,
-            'linkList'       => $linkList,
+            'articleList' => $articleList,
+            'currPage'    => $data['page'],
+            'title'       => $this->WEBConfig['WEB_NAME'],
+            'keywords'    => $this->WEBConfig['WEB_KEYWORDS'],
+            'description' => $this->WEBConfig['WEB_DESCRIPTION'],
         ]);
         $this->fetch('Home/index');
+    }
+
+    function article()
+    {
+        $logic = new \App\Logic\Home\Article();
+        $data = $this->request()->getRequestParam();
+        $aid = $data['aid'];
+        $info = $logic->getArticleInfoForAid($aid);
+
+        $this->assign([
+            'info'        => $info,
+            'currPage'    => $data['page'],
+            'title'       => $info['title'] . '-' . $this->WEBConfig['WEB_NAME'],
+            'keywords'    => $this->WEBConfig['WEB_KEYWORDS'],
+            'description' => $this->WEBConfig['WEB_DESCRIPTION'],
+        ]);
+        $this->fetch('Home/article');
     }
 
 }

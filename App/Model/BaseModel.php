@@ -55,7 +55,7 @@ class BaseModel
      */
     function getAll(int $page = 1, int $pageSize = 10, $field = '*'): array
     {
-        if($pageSize>=0){
+        if($page>=0){
             $list = $this->getDbConnection()
                 ->withTotalCount()
                 ->get($this->table, [$pageSize * ($page - 1), $pageSize], $field);
@@ -64,6 +64,10 @@ class BaseModel
         }else{
             return $this->getDbConnection()->get($this->table,null,$field);
         }
+    }
+
+    function getOne($field="*"){
+        return $this->getDbConnection()->getOne($this->table,$field);
     }
 
 }

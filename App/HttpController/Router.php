@@ -8,6 +8,7 @@
 
 namespace App\HttpController;
 
+use EasySwoole\EasySwoole\Config;
 use EasySwoole\Http\AbstractInterface\AbstractRouter;
 use EasySwoole\Http\Request;
 use EasySwoole\Http\Response;
@@ -27,11 +28,9 @@ class Router extends AbstractRouter
      */
     function initialize(RouteCollector $routeCollector)
     {
-        $routeCollector->get('/index','/Home/index');
-        $routeCollector->get('/','/Home/index');
-        $routeCollector->get('/test','/Index/test');
-        $routeCollector->get('/rpc','/Rpc/index');
-
-
+        $homeRoute = Config::getInstance()->getConf('homeroute');
+        foreach ($homeRoute as $route){
+            $routeCollector->addRoute($route[0],$route[1],$route[2]);
+        }
     }
 }
