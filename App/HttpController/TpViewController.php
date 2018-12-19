@@ -39,6 +39,8 @@ abstract class TpViewController extends Controller
         ob_start();
         $this->view->fetch($template, $vars, $config);
         $content = ob_get_clean();
+        //批量替换模板资源文件内容
+        $content =  str_replace(['<img src="/Upload/image/ueditor/',],['<img src="http://image.php20.cn/Upload/image/ueditor/'],$content);
         $this->response()->write(html_entity_decode($content));
     }
     /**
