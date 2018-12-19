@@ -1,0 +1,12 @@
+<?php
+        $background_num = mt_rand(1,2);
+?>
+
+{switch $background_num }
+{case 1 }
+<script type="text/javascript" src="/res/background/1.js"></script>
+{/case}
+{case 2}
+{include file="./snow/index" /}
+{/case}
+{/switch}

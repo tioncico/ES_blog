@@ -4,47 +4,29 @@
 <body>
 {include file="common/nav" /}
 
-<div class="banner">
+<!--<div class="banner">
     <div class="cont w1000">
         <div class="title">
-            <h3>MY<br/>BLOG</h3>
+            <h3>MY<br />BLOG</h3>
             <h5>Dream still have to have, in case it is realized.</h5>
         </div>
-        <!--<div class="amount">
+        &lt;!&ndash;<div class="amount">
             <p><span class="text">访问量</span><span class="access">1000</span></p>
             <p><span class="text">日志</span><span class="daily-record">1000</span></p>
-        </div>-->
+        </div>&ndash;&gt;
     </div>
-</div>
+</div>-->
+
 <div class="content">
     {include file="common/article" /}
 </div>
-<div id="footer">
-    <div class="wrapper w1000">
-        <div class="module support">
-            <div class="hd"><h2>友情链接</h2></div>
-            <div class="bd">
-                <ul style="margin-left:0;" class="clearfix">
-                    {volist name="linkList['list']" id="vo"}
-                    <li><a href="{$vo['url']}" target="_blank" title="{$vo['lname']}"><div class="desc">{$vo['lname']}</div>
-                    </a></li>
-                    {/volist}
-
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
-<br/>
-<br/>
 {include file="common/foot" /}
-
 
 <script type="text/javascript">
     layui.config({
         base: '/res/js/util/'
-    }).use(['element', 'laypage', 'jquery', 'menu'], function () {
-        element = layui.element, laypage = layui.laypage, $ = layui.$, menu = layui.menu;
+    }).use(['element', 'laypage', 'jquery',], function () {
+        element = layui.element, laypage = layui.laypage, $ = layui.$;
         laypage.render({
             limit: '10'
             , elem: 'demo'
@@ -54,11 +36,10 @@
                 if (first) {
                     return true;
                 }
-                window.location.href = "/index/" + obj['curr'];
+                window.location.href = "/category/{$categoryId}/" + obj['curr'];
             }
         });
-        menu.init();
-    })
+    });
 </script>
 </body>
 </html>

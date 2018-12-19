@@ -8,8 +8,7 @@ use App\Model\BaseModel;
  * Class Tag
  * Create With Automatic Generator
  * @property int tid | 标签主键
- * @property string tag_name | 标签名
- * @property int num | 标签文章数
+ * @property string tname | 标签名
  */
 class Tag extends BaseModel
 {

@@ -12,7 +12,7 @@ namespace App\Model\Article;
  * @property int sort | 排序
  * @property int pid | 父级栏目id
  */
-class CategoryBean extends BaseModel
+class CategoryBean
 {
 	protected $cid;
 

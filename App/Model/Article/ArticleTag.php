@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Model;
+namespace App\Model\Article;
+
+use App\Model\BaseModel;
 
 /**
  * Class ArticleTag

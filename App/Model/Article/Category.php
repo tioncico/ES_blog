@@ -17,23 +17,5 @@ use App\Model\BaseModel;
 class Category extends BaseModel
 {
 	public $table = 'xsk_category';
-
-    /**
-     * 获取数据列表
-     * @param array $condition
-     * @param int   $page
-     * @param int   $pageSize
-     * @return array
-     * @throws \EasySwoole\Mysqli\Exceptions\OrderByFail
-     */
-    function getAll(int $page = 1, int $pageSize = 10, $field = '*'): array
-    {
-        $list = $this->getDbConnection()
-            ->withTotalCount()
-            ->get($this->table, [$pageSize * ($page - 1), $pageSize], $field);
-        $total = $this->getDbConnection()->getTotalCount();
-        return ['total' => $total, 'list' => $list];
-    }
-
 }
 

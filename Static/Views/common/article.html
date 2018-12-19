@@ -1,0 +1,42 @@
+<div class="cont w1000">
+    <div class="title">
+        <span class="layui-breadcrumb" lay-separator="|">
+            <a href="/index" {if condition="$categoryId eq 0" } class="active" {/if}  >全部</a>
+            {volist name="categoryList['list']" id="vo"}
+          <a href="/category/{$vo['cid']}" data-id="{$vo['cid']}" {if condition="$vo['cid'] eq $categoryId" }
+             class="active" {/if} >{$vo['cname']}</a>
+            {/volist}
+        </span>
+    </div>
+    <div class="list-item">
+        {volist name="articleList['list']" id="vo"}
+        <div class="item">
+            <div class="layui-fluid">
+                <div class="layui-row">
+                    <div class="layui-col-xs12 layui-col-sm4 layui-col-md5">
+                        <div class="img"><img src="{empty name='vo[" pic_path"]'}
+                            /Upload/image/default.gif
+                            {else/}
+                            {$vo['pic_path']}
+                            {/empty}" alt="">
+                        </div>
+                    </div>
+                    <div class="layui-col-xs12 layui-col-sm8 layui-col-md7">
+                        <div class="item-cont">
+                            <a href="/article/{$vo['aid']}"><h3>{$vo.title}</h3></a>
+                            <h5><i class="fa fa-user"></i><span class="author">{$vo.author}</span><i
+                                    class="fa fa-calendar"></i><span
+                                    class="article-date"><?php echo date('Y-m-d H:i:s',$vo['addtime']) ?></span>&nbsp;<i
+                                    class="fa fa-list-alt"></i><a href="/category/{$vo['cid']}"><span class="types">{$vo['cname']}</span></a>
+                            </h5>
+                            <a href="/article/{$vo['aid']}"><p>{$vo.description}</p></a>
+                            <a href="/article/{$vo['aid']}" class="go-icon"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {/volist}
+        <div id="demo" style="text-align: center;"></div>
+    </div>
+</div>

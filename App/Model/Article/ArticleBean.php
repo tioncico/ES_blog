@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model\Article;
+namespace App\Model\Article\Aricle;
 
 /**
  * Class ArticleBean
@@ -16,12 +16,10 @@ namespace App\Model\Article;
  * @property int is_top | 是否置顶 1是 0否
  * @property int is_original | 是否原创
  * @property int click | 点击数
- * @property int add_time | 添加时间
+ * @property int addtime | 添加时间
  * @property int cid | 分类id
- * @property int update_time | 更新时间
- * @property string c_name | 分类名称
  */
-class ArticleBean extends BaseModel
+class ArticleBean
 {
 	protected $aid;
 
@@ -45,13 +43,9 @@ class ArticleBean extends BaseModel
 
 	protected $click;
 
-	protected $add_time;
+	protected $addtime;
 
 	protected $cid;
-
-	protected $update_time;
-
-	protected $c_name;
 
 
 	public function setAid($aid){$this->aid=$aid;}
@@ -120,27 +114,15 @@ class ArticleBean extends BaseModel
 	public function getClick(){ return $this->click;}
 
 
-	public function setAddTime($addTime){$this->add_time=$addTime;}
+	public function setAddtime($addtime){$this->addtime=$addtime;}
 
 
-	public function getAddTime(){ return $this->add_time;}
+	public function getAddtime(){ return $this->addtime;}
 
 
 	public function setCid($cid){$this->cid=$cid;}
 
 
 	public function getCid(){ return $this->cid;}
-
-
-	public function setUpdateTime($updateTime){$this->update_time=$updateTime;}
-
-
-	public function getUpdateTime(){ return $this->update_time;}
-
-
-	public function setCName($cName){$this->c_name=$cName;}
-
-
-	public function getCName(){ return $this->c_name;}
 }
 

@@ -39,9 +39,14 @@ abstract class HomeBase extends Base
             'topList'        => $topList,
             'newCommentList' => $newCommentList,
             'linkList'       => $linkList,
+            'navActive'      => 'index',
+            'web_statistics' => $this->WEBConfig['WEB_STATISTICS'],
+            'ADMIN_EMAIL'    => $this->WEBConfig['ADMIN_EMAIL'],
+            'WEB_ICP_NUMBER' => $this->WEBConfig['WEB_ICP_NUMBER'],
             'title'          => $this->WEBConfig['WEB_NAME'],
             'keywords'       => $this->WEBConfig['WEB_KEYWORDS'],
             'description'    => $this->WEBConfig['WEB_DESCRIPTION'],
+            'author'         => $this->WEBConfig['AUTHOR'],
         ]);
         return true;
     }

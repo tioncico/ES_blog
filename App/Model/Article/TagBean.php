@@ -6,53 +6,24 @@ namespace App\Model\Article;
  * Class TagBean
  * Create With Automatic Generator
  * @property int tid | 标签主键
- * @property string tag_name | 标签名
- * @property int num | 文章数
+ * @property string tname | 标签名
  */
 class TagBean
 {
-    protected $tid;
-    protected $tag_name;
-    protected $num;
+	protected $tid;
+
+	protected $tname;
 
 
-    public function setTid($tid)
-    {
-        $this->tid = $tid;
-    }
+	public function setTid($tid){$this->tid=$tid;}
 
 
-    public function getTid()
-    {
-        return $this->tid;
-    }
+	public function getTid(){ return $this->tid;}
 
 
-    public function setTagName($tagName)
-    {
-        $this->tag_name = $tagName;
-    }
+	public function setTname($tname){$this->tname=$tname;}
 
 
-    public function getTagName()
-    {
-        return $this->tag_name;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getNum()
-    {
-        return $this->num;
-    }
-
-    /**
-     * @param mixed $num
-     */
-    public function setNum($num): void
-    {
-        $this->num = $num;
-    }
+	public function getTname(){ return $this->tname;}
 }
 

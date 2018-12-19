@@ -7,11 +7,7 @@
  */
 include "./vendor/autoload.php";
 \EasySwoole\EasySwoole\Core::getInstance()->initialize();
-go(function () {
-    $dbConnect = \EasySwoole\Component\Pool\PoolManager::getInstance()->getPool(\App\Utility\Pool\MysqlPool::class)->getObj();
-    $model = new \App\Model\BaseModel($dbConnect);
-    $data = $model->getDbConnection()->where('aid',[100,103,3],'in')->get('xsk_article');
-    var_dump($data);
-
-
+go(function (){
+    $a = new \App\Utility\ModelBuilder('/www/wwwroot/es_blog/App/Model');
+    $a->buildFromDbName('es_blog','App\Model','BaseModel','xsk_');
 });

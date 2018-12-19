@@ -13,8 +13,6 @@ use App\Model\BaseModel;
  * @property int pid | 父级id
  * @property int aid | 文章id
  * @property string content | 内容
- * @property string oauth_user_name | 评论用户名
- * @property string article_title | 文章名
  * @property int date | 评论日期
  * @property int status | 1:已审核 0：未审核
  * @property int is_delete | 是否删除

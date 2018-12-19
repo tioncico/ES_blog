@@ -7,7 +7,7 @@
  */
  
  
-layui.define(['mm','jquery'],function(exports){
+layui.define(['jquery'],function(exports){
   var $ = layui.$,mm = layui.mm;
   var menu = {
     init: function(){

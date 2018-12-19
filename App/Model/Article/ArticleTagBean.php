@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model;
+namespace App\Model\Article;
 
 /**
  * Class ArticleTagBean
@@ -8,7 +8,7 @@ namespace App\Model;
  * @property int aid | 文章id
  * @property int tid | 标签id
  */
-class ArticleTagBean extends BaseModel
+class ArticleTagBean
 {
 	protected $aid;
 
